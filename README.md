@@ -2,14 +2,16 @@
 
 Translate multi-effects presets between devices. First pair: **Valeton GP-200 (`.prst`) → Hotone Ampero Mini** setting guide.
 
-Status: M1 (core decoder) — see [DESIGN.md](DESIGN.md).
+Status: M2 (mapping) — see [DESIGN.md](DESIGN.md).
 
 ## Development
 
 ```bash
 npm install
-npm test                               # unit tests (+ private fixtures when present)
-npm run decode -- path/to/preset.prst  # print a decoded preset
+npm test                                # unit tests (+ private fixtures when present)
+npm run decode -- path/to/preset.prst   # print a decoded preset
+npm run convert -- path/to/preset.prst  # print the ampero mini setting guide
+npm run report:mapping                  # list params each curated mapping can't carry over
 npm run dev                            # web ui (placeholder until M3)
 ```
 

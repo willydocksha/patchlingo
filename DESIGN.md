@@ -112,8 +112,8 @@ Untuk efek GP-200 yang belum punya entri mapping, ada fallback otomatis:
 | Data | Sumber | Status |
 |---|---|---|
 | ID efek + definisi parameter GP-200 (305 efek) | Preset Forge `effectNames.ts`, `effectParams.ts`, `effectDescriptions.ts` | ada, tinggal di-vendor |
-| Daftar model Ampero Mini + parameter + gear asli | Manual resmi Hotone (PDF, firmware V1.0) | perlu diekstrak ke JSON |
-| Tabel mapping | Disusun manual. Mulai dari ±20 efek yang dipakai preset Danny Rico, lalu diperluas | 14 efek sudah ada di panduan pertama |
+| Daftar model Ampero Mini + parameter + gear asli | Manual resmi Hotone (PDF, firmware V1.0) | ada: `src/core/devices/amperoMini/catalog.ts` |
+| Tabel mapping | Dikurasi manual dari deskripsi gear kedua device | ada: `src/core/mappers/gp200ToAmperoMini.table.ts`, hampir semua efek GP-200 |
 
 ## Stack
 

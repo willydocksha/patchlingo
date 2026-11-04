@@ -70,7 +70,8 @@ function toBlock(block: Gp200Block): Block {
   const params: Record<string, ParamValue> = {};
   for (const def of EFFECT_PARAMS[block.effectId] ?? []) {
     const { value, problem } = readParam(def, block.params[def.idx] ?? NaN);
-    params[def.name] = value;
+    // vendored names sometimes carry trailing spaces ("Volume ")
+    params[def.name.trim()] = value;
     // only bother the user about problems in blocks that are actually on
     if (problem && block.enabled) warnings.push(problem);
   }
@@ -79,6 +80,7 @@ function toBlock(block: Gp200Block): Block {
     category: categorize(block, name),
     enabled: block.enabled,
     sourceModel: name,
+    sourceModule: info?.module,
     realGear: info ? cleanDescription(EFFECT_DESCRIPTIONS[info.name]) : undefined,
     params,
     warnings,

@@ -6,6 +6,7 @@ Blok yang **off** di preset GP-200 tidak dimasukkan. Volume module GP-200 = 100 
 Catatan umum:
 - Knob "Volume" di amp GP-200 = **Master** di Ampero.
 - Skala Low Cut / High Cut di cab beda unit. High Cut di GP-200 = 20001, artinya **off** (buka penuh).
+- Di kelima preset asli, **noise gate ada paling depan** (sebelum comp/drive). Kalau posisi NR di Ampero bisa dipindah, taruh di awal chain.
 - Setelah dimasukkan, samakan level antar-preset pakai Master atau patch volume. Algoritma kedua device beda, jadi loudness pasti nggak sama persis.
 
 ---
@@ -57,7 +58,7 @@ Base-nya sama dengan 28-A (Comprosso → Black Twin → Smart Gate 20 → Tweed 
 | AMP | Dark Twin | **Black Twin** | Gain 59, Master 49, Bass 40, Middle 62, Treble 75, Bright ON |
 | NR | Gate 1 | **Smart Gate** | Threshold 20 |
 | CAB | TWD CP | **Tweed Chap 1x8** | Volume 90, Low Cut minimum, High Cut off |
-| DLY | Ambience 1 (multi-tap) | **Pure Eko** *(pengganti, multi-tap nggak ada)* | Mix 14, Time 500 ms, Feedback 50, Sync OFF |
+| DLY | Ambience 1 (multi-tap) | **Multi Head** *(pengganti, sama-sama multi-tap)* | Mix 14, Time 500 ms, Feedback 50, Tone 80, Sync OFF; coba beberapa Mode (1-12) |
 | RVB | Arena | **Hall** *(atau Church)* | Mix 44, Pre Delay 100 ms, Decay 70, Trail OFF |
 
 > Walaupun namanya "shimmer", preset aslinya **nggak pakai shimmer**. Isinya multi-tap delay + reverb Arena dengan pre-delay panjang.

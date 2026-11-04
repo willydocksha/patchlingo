@@ -2,7 +2,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { decodeGp200, rigFromGp200, type Rig } from '../src/core';
+import { decodeGp200, gp200ToAmperoMini, rigFromGp200, type Rig } from '../src/core';
 
 const DIR = join(__dirname, '..', 'fixtures', 'private');
 
@@ -73,5 +73,40 @@ describe.skipIf(!existsSync(join(DIR, '28-A clean delay aja.prst')))('danny rico
     const octa = rig.blocks.find((b) => b.sourceModel === 'OCTA')!;
     expect(octa.category).toBe('pitch');
     expect(octa.params).toEqual({ 'Low Oct': 30, 'High Oct': 0, Dry: 50 });
+  });
+});
+
+describe.skipIf(!existsSync(join(DIR, '28-A clean delay aja.prst')))('danny rico presets -> ampero mini', () => {
+  // ampero model chain per preset ("module:model")
+  const chain = (file: string) =>
+    gp200ToAmperoMini(load(file)).blocks.map((b) => `${b.module}:${b.model}`);
+
+  it('maps every preset to the expected ampero models', () => {
+    expect(chain('28-A clean delay aja.prst')).toEqual([
+      'NR:Smart Gate', 'FX:Comprosso', 'AMP:Black Twin', 'CAB:Tweed Chap 1x8', 'DLY:Analog Eko', 'RVB:Spring',
+    ]);
+    expect(chain('28-B crunch .prst')).toEqual([
+      'NR:Smart Gate', 'FX:Green Drive', 'AMP:Marshell 800', 'CAB:UK Lead 4x12', 'DLY:Vintage Rack', 'RVB:Plate',
+    ]);
+    expect(chain('28-C lead delay.prst')).toEqual([
+      'NR:Smart Gate', 'FX:Enhancer', 'FX:Screamood', 'AMP:Rector Dual V', 'CAB:Rector 4x12', 'EQ:V-EQ', 'DLY:Vintage Rack', 'RVB:Plate',
+    ]);
+    expect(chain('28-D shimmer tekiwir .prst')).toEqual([
+      'NR:Smart Gate', 'FX:Comprosso', 'AMP:Black Twin', 'CAB:Tweed Chap 1x8', 'DLY:Multi Head', 'RVB:Hall',
+    ]);
+    expect(chain('29-A octavianti.prst')).toEqual([
+      'NR:Smart Gate', 'FX:Clean Octa', 'FX:Screamood', 'AMP:Rector Dual V', 'CAB:Rector 4x12', 'EQ:V-EQ',
+    ]);
+  });
+
+  // spot-check translated values for the lead preset
+  it('carries values across for 28-C', () => {
+    const patch = gp200ToAmperoMini(load('28-C lead delay.prst'));
+    const values = (model: string) =>
+      Object.fromEntries(patch.blocks.find((b) => b.model === model)!.params.map((p) => [p.name, p.display]));
+    expect(values('Enhancer')).toEqual({ '+3dB': 'On', Bright: 'On', Volume: '20' });
+    expect(values('Rector Dual V')).toMatchObject({ Gain: '50', Presence: '70', Master: '70' });
+    expect(values('V-EQ')).toEqual({ '80Hz': '-4', '240Hz': '-7', '750Hz': '6', '2.2kHz': '15', '6.6kHz': '22' });
+    expect(values('Vintage Rack').Time).toBe('ikut tap tempo');
   });
 });

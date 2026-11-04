@@ -12,7 +12,9 @@
     "typecheck": "tsc -b --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "decode": "vite-node scripts/decode.ts"
+    "decode": "vite-node scripts/decode.ts",
+    "convert": "vite-node scripts/convert.ts",
+    "report:mapping": "vite-node scripts/mapping-report.ts"
   },
   "dependencies": {
     "react": "^18.3.1",

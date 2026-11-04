@@ -26,6 +26,8 @@ export interface Block {
   enabled: boolean;
   // model name as shown on the source device, e.g. "Dark Twin"
   sourceModel: string;
+  // source device's own module/family for the model, e.g. "AMP" (disambiguates repeated names)
+  sourceModule?: string;
   // real-world gear the model is based on, main key for cross-device matching
   realGear?: string;
   // param name -> value, in the source device's param order
