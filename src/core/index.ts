@@ -9,3 +9,5 @@ export { gp200ToAmperoMini } from './mappers/gp200ToAmperoMini';
 export type { AmperoPatch, TargetBlock, TargetParam } from './mappers/gp200ToAmperoMini';
 export { GP200_TO_AMPERO_MINI } from './mappers/gp200ToAmperoMini.table';
 export type { MapEntry, MatchLevel } from './mappers/gp200ToAmperoMini.table';
+export { MATCH_LABEL, MATCH_HINT } from './render/labels';
+export { patchToMarkdown, patchesToMarkdown, settingText } from './render/markdown';

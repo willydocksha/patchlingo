@@ -131,10 +131,10 @@ Untuk efek GP-200 yang belum punya entri mapping, ada fallback otomatis:
 
 ## Milestone
 
-1. **M1 — Core**: decoder GP-200 + model `Rig` + test pakai 5 fixture.
-2. **M2 — Mapping**: ekstrak daftar model Ampero dari manual, isi tabel mapping untuk efek-efek yang umum dipakai (amp, cab, drive, delay, reverb), lalu fallback otomatis.
-3. **M3 — Web UI**: drag-drop, tampilan per preset, badge kualitas padanan, export Markdown/print.
-4. **M4 — Polish**: dark mode, tampilan mobile (buat dibuka di HP di samping pedalboard), deploy.
+1. ✅ **M1 — Core**: decoder GP-200 + model `Rig` + test pakai 5 fixture.
+2. ✅ **M2 — Mapping**: ekstrak daftar model Ampero dari manual, isi tabel mapping untuk efek-efek yang umum dipakai (amp, cab, drive, delay, reverb), lalu fallback otomatis.
+3. ✅ **M3 — Web UI**: drag-drop, tampilan per preset, badge kualitas padanan, export Markdown/print.
+4. ✅ **M4 — Polish**: dark mode, tampilan mobile (buat dibuka di HP di samping pedalboard), workflow deploy GitHub Pages. Tinggal publish repo-nya.
 
 ## Di luar scope v1
 

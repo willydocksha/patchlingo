@@ -17,6 +17,9 @@ export interface TargetParam {
   display: string;
   // where the value came from
   from: 'source' | 'fixed' | 'default';
+  // source param name when it differs from the target name (e.g. "Volume" for Master)
+  sourceParam?: string;
+  // something the player should know about this value
   note?: string;
 }
 
@@ -173,7 +176,7 @@ function mapParams(block: Block, model: AmperoModel, entry: MapEntry | undefined
     used.add(srcKey);
     const { value, note } = convertValue(def, block.params[srcKey]!);
     const param: TargetParam = { name: def.name, value, display: display(def, value), from: 'source', note };
-    if (srcKey !== def.name) param.note = [`dari ${srcKey}`, note].filter(Boolean).join('; ');
+    if (srcKey !== def.name) param.sourceParam = srcKey;
     specialDisplay(block.category, param, block);
     return param;
   });
